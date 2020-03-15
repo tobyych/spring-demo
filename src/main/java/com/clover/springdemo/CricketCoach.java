@@ -1,29 +1,32 @@
 package com.clover.springdemo;
 
-import org.springframework.beans.factory.DisposableBean;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component("myCoach")
+@Scope
 public class CricketCoach implements Coach, DisposableBean {
 	
+	@Value("${foo.email}")
 	private String emailAddress;
+	
+	@Value("${foo.team}")
 	private String team;
+	
+	@Autowired
+	@Qualifier("happyFortuneService")
 	private FortuneService fortuneService;
 	
 	public CricketCoach() {	
 		System.out.println("Inside CricketCoach no-arg constructor");
 	}
-	
-	public void setFortuneService(FortuneService fortuneService) {
-		this.fortuneService = fortuneService;
-	}
-	
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
-	
-	public void setTeam(String team) {
-		this.team= team;
-	}
-	
 
 	@Override
 	public String getDailyWorkout() {
@@ -45,19 +48,18 @@ public class CricketCoach implements Coach, DisposableBean {
 				);
 	}
 	
+	@PostConstruct
 	private void doCustomInit() {
 		System.out.println("Inside custom init function");
 	}
 
+	@PreDestroy
 	private void doCustomDestroy() {
 		System.out.println("Inside custom destroy function");
 	}
 
 	@Override
-	public void destroy() throws Exception {
-		System.out.println("Inside new destory method");
-		// TODO Auto-generated method stub
-		
+	public void destroy() {
+		System.out.println("Inside destory method");
 	}
-
 }
