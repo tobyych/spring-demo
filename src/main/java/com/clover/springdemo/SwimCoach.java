@@ -1,8 +1,5 @@
 package com.clover.springdemo;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,21 +7,29 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component
 @Scope
-public class CricketCoach implements Coach, DisposableBean {
-	
+public class SwimCoach implements Coach, DisposableBean {
+
 	@Value("${foo.email}")
 	private String emailAddress;
-	
+
 	@Value("${foo.team}")
 	private String team;
-	
-	@Autowired
-	@Qualifier("happyFortuneService")
+
+//	@Autowired
+//	@Qualifier("happyFortuneService")
 	private FortuneService fortuneService;
-	
-	public CricketCoach() {	
+
+	public SwimCoach() {
 		System.out.println("Inside CricketCoach no-arg constructor");
+	}
+
+	public SwimCoach(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
 	}
 
 	@Override
@@ -41,7 +46,7 @@ public class CricketCoach implements Coach, DisposableBean {
 	
 	public String toString() {
 		return String.format("%s ----- Email: %s, Team: %s", 
-					CricketCoach.class,
+					SwimCoach.class,
 					emailAddress,
 					team
 				);
