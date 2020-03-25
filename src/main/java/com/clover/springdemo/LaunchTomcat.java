@@ -1,6 +1,8 @@
 package com.clover.springdemo;
 
 import java.io.File;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
@@ -37,6 +39,14 @@ public class LaunchTomcat {
         resources.addPreResources(new DirResourceSet(resources, "/WEB-INF/lib",
                 additionWebInfClasses.getAbsolutePath(), "/"));
         ctx.setResources(resources);
+
+//        ClassLoader cl = ClassLoader.getSystemClassLoader();
+//
+//        URL[] urls = ((URLClassLoader) cl).getURLs();
+//
+//        for(URL url: urls){
+//            System.out.println(url.getFile());
+//        }
 
         tomcat.start();
         tomcat.getServer().await();

@@ -13,5 +13,9 @@
 
 <br />
 
+<a href="customer/showForm">Customer Form</a>
+
+<br />
+
 </body>
 </html>
