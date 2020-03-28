@@ -11,6 +11,8 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
+import javax.servlet.http.HttpServlet;
+
 public class LaunchTomcat {
     public static void main(String[] args) throws Exception {
         initServer();
@@ -29,8 +31,10 @@ public class LaunchTomcat {
 
         tomcat.setPort(Integer.valueOf(webPort));
 
-        StandardContext ctx = (StandardContext) tomcat.addWebapp("/", new File(webappDirLocation).getAbsolutePath());
-        System.out.println("configuring app with basedir: " + new File("./" + webappDirLocation).getAbsolutePath());
+        String contextPath = "";
+
+        StandardContext ctx = (StandardContext) tomcat.addWebapp(contextPath, new File(webappDirLocation).getAbsolutePath());
+        System.out.println("configuring app with basedir: " + new File(webappDirLocation).getAbsolutePath());
 
         // Declare an alternative location for your "WEB-INF/classes" dir
         // Servlet 3.0 annotation will work
@@ -47,6 +51,13 @@ public class LaunchTomcat {
 //        for(URL url: urls){
 //            System.out.println(url.getFile());
 //        }
+
+//        HttpServlet servlet = new TestDBServlet();
+//        String servletName = "TestDB";
+//        String urlPattern = "/testDB";
+//
+//        tomcat.addServlet(contextPath, servletName, servlet);
+//        ctx.addServletMappingDecoded(urlPattern, servletName);
 
         tomcat.start();
         tomcat.getServer().await();

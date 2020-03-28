@@ -5,46 +5,62 @@
 <html>
 
 <head>
-    <title>Customer Registration Form</title>
+    <title>Save Customer</title>
 
-    <style>
-        .error {color:red}
-    </style>
+    <link type="text/css"
+          rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/css/style.css" />
+
+    <link type="text/css"
+          rel="stylesheet"
+          href="${pageContext.request.contextPath}/resources/css/add-customer-style.css" />
 </head>
 
 <body>
 
-    <i>Fill out the form. Asterisk (*) means required.</i>
+<div id="wrapper">
+    <div id="header">
+        <h2>CRM - Customer Relationship Manager</h2>
+    </div>
 
-    <form:form action="processForm" modelAttribute="customer">
+    <div id="container">
+        <h3>Save Cusomter</h3>
 
-        First name: <form:input path="firstName" />
+        <form:form action="saveCustomer" modelAttribute="customer" method="POST">
 
-        <br />
+            <!-- associate the data with customer id -->
+            <form:hidden path="id" />
 
-        Last name (*): <form:input path="lastName" />
-        <form:errors path="lastName" cssClass="error" />
+            <table>
+                <tbody>
+                    <tr>
+                        <td><label>First name:</label></td>
+                        <td><form:input path="firstName" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Last name:</label></td>
+                        <td><form:input path="lastName" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email:</label></td>
+                        <td><form:input path="email" /></td>
+                    </tr>
+                    <tr>
+                        <td><label /></td>
+                        <td><input type="submit" value="Save" class="save" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form:form>
 
-        <br />
+        <div style="clear; both;" />
 
-        Free passes: <form:input path="freePasses" />
-        <form:errors path="freePasses" cssClass="error" />
+        <p>
+            <a href="${pageContext.request.contextPath}/customer/list">Back to List</a>
+        </p>
+    </div>
+</div>
 
-        <br />
-
-        Postal code: <form:input path="postalCode" />
-        <form:errors path="postalCode" cssClass="error" />
-
-        <br />
-
-        Course code: <form:input path="courseCode" />
-        <form:errors path="courseCode" cssClass="error" />
-
-        <br />
-
-        <input type="submit" value="Submit" />
-
-    </form:form>
 </body>
 
 </html>

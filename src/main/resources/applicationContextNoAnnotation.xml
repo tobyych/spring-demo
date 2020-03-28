@@ -10,24 +10,24 @@
 	
 	<context:property-placeholder location="classpath:coach.properties" />
 	
-	<bean id="myLoggerConfig" class="com.clover.springdemo.MyLoggerConfig" init-method="initLogger">
+	<bean id="myLoggerConfig" class="com.clover.springdemo.old.MyLoggerConfig" init-method="initLogger">
     	<property name="rootLoggerLevel" value="FINE" />
     	<property name="printedLoggerLevel" value="FINE"/>
     </bean>
     
     <bean id="myCustomBeanProcessor"
-    	class="com.clover.springdemo.MyCustomBeanProcessor">   	
+    	class="com.clover.springdemo.old.MyCustomBeanProcessor">
     </bean>
     
     <bean id="myFortuneService"
-		class="com.clover.springdemo.HappyFortuneService">
+		class="com.clover.springdemo.old.HappyFortuneService">
 	</bean>
 	<!-- <bean id="myCoach"
-		class="com.clover.springdemo.TrackCoach">
+		class="com.clover.springdemo.old.TrackCoach">
 		<constructor-arg ref="myFortuneService" />
 	</bean> -->
 	<bean id="myCoach"
-		class="com.clover.springdemo.CricketCoach"
+		class="com.clover.springdemo.old.CricketCoach"
 		scope="prototype"
 		init-method="doCustomInit"
 		destroy-method="destroy">

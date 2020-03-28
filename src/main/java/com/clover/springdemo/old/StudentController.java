@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
 
-@Controller
-@RequestMapping("student")
 public class StudentController {
 
     @Value("#{countryOptions}")

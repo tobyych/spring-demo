@@ -1,0 +1,5 @@
+Service layer:
+
+- Can integrate multiple data sources
+- Handles business logics
+- Output data to controller layer

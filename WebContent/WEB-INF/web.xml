@@ -6,6 +6,11 @@
 
     <display-name>spring-mvc-demo</display-name>
 
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
     <absolute-ordering />
 
     <!-- Spring MVC Configs -->
@@ -16,10 +21,17 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/spring-mvc-demo-servlet.xml</param-value>
+            <param-value>/WEB-INF/spring-mvc-crud-demo-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
+<!--    &lt;!&ndash; Step 1: Configure Spring MVC Dispatcher Servlet &ndash;&gt;-->
+<!--    <servlet>-->
+<!--        <servlet-name>testdb</servlet-name>-->
+<!--        <servlet-class>com.clover.springdemo.TestDBServlet</servlet-class>-->
+<!--        <load-on-startup>1</load-on-startup>-->
+<!--    </servlet>-->
 
     <!-- Step 2: Set up URL mapping for Spring MVC Dispatcher Servlet -->
     <servlet-mapping>
