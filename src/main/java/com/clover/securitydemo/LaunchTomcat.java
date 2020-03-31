@@ -1,17 +1,12 @@
-package com.clover.springdemo;
+package com.clover.securitydemo;
 
-import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
-
-import org.apache.catalina.LifecycleException;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
-import javax.servlet.http.HttpServlet;
+import java.io.File;
 
 public class LaunchTomcat {
     public static void main(String[] args) throws Exception {
