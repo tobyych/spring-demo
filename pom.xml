@@ -18,7 +18,7 @@
         <project.build.directory>target</project.build.directory>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <tomcat.version>8.5.51</tomcat.version>
+        <tomcat.version>10.0.4</tomcat.version>
         <springframework.version>5.2.4.RELEASE</springframework.version>
         <springframework.security.version>5.3.0.RELEASE</springframework.security.version>
     </properties>
